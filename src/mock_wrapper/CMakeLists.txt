@@ -8,6 +8,12 @@ add_library(${TARGET_NAME} STATIC
     ${TARGET_SOURCES}
 )
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_link_options(${TARGET_NAME} PRIVATE
+        /OPT:NOREF
+    )
+endif()
+
 target_link_libraries(${TARGET_NAME}
     GTest::gmock
 )
