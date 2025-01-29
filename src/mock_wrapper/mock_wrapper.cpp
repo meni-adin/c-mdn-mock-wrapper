@@ -27,6 +27,6 @@ ACTION(action_realloc) {
 void MWMock::SetUp() {
     EXPECT_CALL(*mWMock, malloc(_, _))
         .WillRepeatedly(action_malloc());
-    EXPECT_CALL(*mWMock, realloc(_, _))
+    EXPECT_CALL(*mWMock, realloc(_, _, _))
         .WillRepeatedly(action_realloc());
 }
