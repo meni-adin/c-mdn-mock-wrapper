@@ -6,9 +6,6 @@
 
 #include "mock_wrapper.h"
 
-using namespace std;
-using namespace testing;
-
 class MWMock {
 public:
     void SetUp();
