@@ -12,6 +12,6 @@ public:
     MOCK_METHOD((void *), malloc, (const char *, size_t));
 };
 
-extern unique_ptr<MWMock> mWMock;
+extern std::unique_ptr<MWMock> mWMock;
 
 #endif  // MOCK_WRAPPER_HPP
