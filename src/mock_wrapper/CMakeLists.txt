@@ -8,9 +8,9 @@ add_library(${TARGET_NAME} STATIC
     ${TARGET_SOURCES}
 )
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    target_link_options(${TARGET_NAME} PRIVATE
-        /OPT:NOREF
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_options(${target} PRIVATE
+        /wd4514
     )
 endif()
 
