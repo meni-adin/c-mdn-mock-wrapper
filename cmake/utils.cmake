@@ -6,9 +6,10 @@ function(${PROJECT_NAME}_set_compiler_flags)
         endif()
     elseif(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
         add_compile_options(
+            /wd5045
             /wd5072
         )
-else()
+    else()
         message(FATAL_ERROR "Unknown C compiler: ${CMAKE_C_COMPILER_ID}")
     endif()
 endfunction()
