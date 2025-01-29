@@ -10,6 +10,7 @@ class MWMock {
 public:
     void SetUp();
     MOCK_METHOD((void *), malloc, (const char *, size_t));
+    MOCK_METHOD((void *), realloc, (const char *, void *, size_t));
 };
 
 extern std::unique_ptr<MWMock> mWMock;
