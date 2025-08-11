@@ -1,11 +1,11 @@
-#ifndef MOCK_WRAPPER_H
-#define MOCK_WRAPPER_H
+#ifndef MDN_MOCK_WRAPPER_H
+#define MDN_MOCK_WRAPPER_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif  // __cplusplus
 
-void *mw_malloc(const char *callerName, size_t size);
+void *mdn_mw_malloc(const char *callerName, size_t size);
 #ifdef MW_ENABLE_MOCKING
 # define MW_malloc(size) mw_malloc(__func__, (size))
 #else
@@ -23,4 +23,4 @@ void *mw_realloc(const char *callerName, void *ptr, size_t size);
 }
 #endif  // __cplusplus
 
-#endif  // MOCK_WRAPPER_H
+#endif  // MDN_MOCK_WRAPPER_H
