@@ -8,8 +8,8 @@
 
 class MWMock {
 public:
-    static int Dummy();
-    void SetUp();
+    static int  Dummy();
+    static void SetUp();
     MOCK_METHOD((void *), malloc, (const char *, size_t));
     MOCK_METHOD((void *), realloc, (const char *, void *, size_t));
 };
