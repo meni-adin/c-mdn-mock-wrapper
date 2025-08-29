@@ -6,6 +6,11 @@ using namespace testing;
 
 unique_ptr<MWMock> mWMock;
 
+int MWMock::Dummy() {
+    constexpr int result = 42;
+    return result;
+}
+
 extern "C" {
 void *mw_malloc(const char *callerName, size_t size) {
     return mWMock->malloc(callerName, size);

@@ -1,4 +1,4 @@
-set(TARGET_NAME mock_wrapper)
+set(TARGET_NAME mdn_mock_wrapper)
 
 set(TARGET_SOURCES
     "mock_wrapper.cpp"

@@ -1,3 +1,11 @@
+function(${PROJECT_NAME}_print_variable variable)
+    if(DEFINED ${variable})
+        message(STATUS "${variable} = ${${variable}}")
+    else()
+        message(STATUS "Variable '${variable}' is not defined.")
+    endif()
+endfunction()
+
 function(${PROJECT_NAME}_set_compiler_flags)
     if((CMAKE_C_COMPILER_ID STREQUAL "AppleClang") OR (CMAKE_C_COMPILER_ID STREQUAL "GNU"))
         if(CMAKE_C_COMPILER_ID STREQUAL "AppleClang")
@@ -6,7 +14,6 @@ function(${PROJECT_NAME}_set_compiler_flags)
         endif()
     elseif(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
         add_compile_options(
-            /wd5045
             /wd5072
         )
     else()
@@ -28,6 +35,7 @@ function(${PROJECT_NAME}_set_target_c_compiler_flags target)
             -Wnull-dereference
             -Wdouble-promotion
             -Wimplicit-fallthrough
+            -Wno-switch
         )
         if(${PROJECT_NAME_UC}_ENABLE_COVERAGE)
             target_compile_options(${target} PRIVATE
@@ -50,13 +58,15 @@ function(${PROJECT_NAME}_set_target_c_compiler_flags target)
         target_compile_options(${target} PRIVATE
             /Wall
             /WX
+            /wd4061
+            /wd4062
             /wd4710
             /wd4711
             /wd4820
             /wd5045
             /wd5072
         )
-else()
+    else()
         message(FATAL_ERROR "Unknown C compiler: ${CMAKE_C_COMPILER_ID}")
     endif()
 endfunction()
@@ -79,6 +89,7 @@ function(${PROJECT_NAME}_set_target_cpp_compiler_flags target)
         endif()
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
         target_compile_options(${target} PRIVATE
+            /EHsc
             /Wall
             /WX
             /wd4514
@@ -89,6 +100,7 @@ function(${PROJECT_NAME}_set_target_cpp_compiler_flags target)
             /wd4820
             /wd5026
             /wd5027
+            /wd5045
             /wd5072
         )
     else()
