@@ -5,19 +5,19 @@
 extern "C" {
 #endif  // __cplusplus
 
-void *mdn_mw_malloc(const char *callerName, size_t size);
-#ifdef MW_ENABLE_MOCKING
-# define MW_malloc(size) mw_malloc(__func__, (size))
+void *mdn_MW_malloc_(const char *callerName, size_t size);
+#ifdef MDN_MW_ENABLE_MOCKING
+# define MDN_MW_malloc(size) mdn_MW_malloc_(__func__, (size))
 #else
-# define MW_malloc(size) malloc(size)
-#endif  // ENABLE_MOCKING
+# define MDN_MW_malloc(size) malloc(size)
+#endif  // MDN_MW_ENABLE_MOCKING
 
-void *mw_realloc(const char *callerName, void *ptr, size_t size);
-#ifdef MW_ENABLE_MOCKING
-# define MW_realloc(ptr, size) mw_realloc(__func__, (ptr), (size))
+void *mdn_MW_realloc_(const char *callerName, void *ptr, size_t size);
+#ifdef MDN_MW_ENABLE_MOCKING
+# define MDN_MW_realloc(ptr, size) mdn_MW_realloc_(__func__, (ptr), (size))
 #else
-# define MW_realloc(ptr, size) realloc((ptr), (size))
-#endif  // ENABLE_MOCKING
+# define MDN_MW_realloc(ptr, size) realloc((ptr), (size))
+#endif  // MDN_MW_ENABLE_MOCKING
 
 #ifdef __cplusplus
 }
